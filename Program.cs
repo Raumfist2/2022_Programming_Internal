@@ -16,7 +16,7 @@ namespace _2022_Programming_Internal
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Startup());
         }
     }
 }

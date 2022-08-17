@@ -10,11 +10,22 @@ using System.Windows.Forms;
 
 namespace _2022_Programming_Internal
 {
-    public partial class Game : Form
+    public partial class Startup : Form
     {
-        public Game()
+        public Startup()
         {
             InitializeComponent();
+        }
+
+        private void Startup_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Game().Show();
+            this.Hide();
         }
     }
 }

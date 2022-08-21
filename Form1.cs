@@ -13,11 +13,17 @@ namespace _2022_Programming_Internal
     public partial class Game : Form
     {
         Graphics g;
-        Enemy enemy1 = new Enemy();
+        Enemy[] enemy = new Enemy[6];
 
         public Game()
         {
             InitializeComponent();
+            for (int i = 0; i < 6; i++)
+            {
+                int x = 10 + (i * 75);
+                enemy[i] = new Enemy(x);
+            }
+
         }
 
         private void Game_Load(object sender, EventArgs e)
@@ -29,8 +35,10 @@ namespace _2022_Programming_Internal
         {
             //get the graphics used to paint on the panel control
             g = e.Graphics;
-            //call the Planet class's DrawPlanet method to draw the image planet1 
-            enemy1.DrawEnemy(g);
+            for (int i = 0; i < 6; i++)
+            {
+                enemy[i].DrawEnemy(g);
+            }
 
         }
     }

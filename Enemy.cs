@@ -14,9 +14,10 @@ namespace _2022_Programming_Internal
         public Rectangle enemyRec;
         public int score;
 
-        public Enemy()
+        //Create a constructor (initialises the values of the fields)
+        public Enemy(int spacing)
         {
-            x = 10;
+            x = spacing;
             y = 10;
             width = 40;
             height = 40;
@@ -28,6 +29,7 @@ namespace _2022_Programming_Internal
         // Methods for the Planet class
         public void DrawEnemy(Graphics g)
         {
+            enemyRec = new Rectangle(x, y, width, height);
             g.DrawImage(enemyImage, enemyRec);
         }
 

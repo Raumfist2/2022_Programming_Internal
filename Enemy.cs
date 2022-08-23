@@ -33,5 +33,11 @@ namespace _2022_Programming_Internal
             g.DrawImage(enemyImage, enemyRec);
         }
 
+        public void MoveEnemy()
+        {
+            y += 5;
+            enemyRec.Location = new Point(x, y);
+        }
+
     }
 }

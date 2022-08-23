@@ -20,7 +20,7 @@ namespace _2022_Programming_Internal
             InitializeComponent();
             for (int i = 0; i < 6; i++)
             {
-                int x = 10 + (i * 75);
+                int x = 10 + (i * 65);
                 enemy[i] = new Enemy(x);
             }
 

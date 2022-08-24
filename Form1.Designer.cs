@@ -45,6 +45,7 @@
             // TmrEnemy
             // 
             this.TmrEnemy.Enabled = true;
+            this.TmrEnemy.Tick += new System.EventHandler(this.TmrEnemy_Tick);
             // 
             // Game
             // 

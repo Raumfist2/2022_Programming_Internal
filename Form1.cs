@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +19,8 @@ namespace _2022_Programming_Internal
         public Game()
         {
             InitializeComponent();
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, pnlGame, new object[] { true });
+
             for (int i = 0; i < 6; i++)
             {
                 int x = 10 + (i * 65);
@@ -40,6 +43,21 @@ namespace _2022_Programming_Internal
                 enemy[i].DrawEnemy(g);
             }
 
+        }
+
+        private void TmrEnemy_Tick(object sender, EventArgs e)
+        {
+            foreach (Enemy E in enemy)
+            {
+                E.MoveEnemy();
+                if (E.y >= pnlGame.Height)
+                {
+                    E.y = 30;
+                }
+
+
+            }
+            pnlGame.Invalidate();//makes the paint event fire to redraw the panel
         }
     }
 }

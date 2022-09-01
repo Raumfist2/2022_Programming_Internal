@@ -15,10 +15,12 @@ namespace _2022_Programming_Internal
     {
         Graphics g;
         Enemy[] enemy = new Enemy[6];
+        Random yspeed = new Random();
 
         public Game()
         {
             InitializeComponent();
+            //Stop the panel from flickering
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, pnlGame, new object[] { true });
 
             for (int i = 0; i < 6; i++)
@@ -40,6 +42,10 @@ namespace _2022_Programming_Internal
             g = e.Graphics;
             for (int i = 0; i < 6; i++)
             {
+                // generate a random number from 5 to 20 and put it in rndmspeed
+                int rndmspeed = yspeed.Next(2, 10);
+                enemy[i].y += rndmspeed;
+
                 enemy[i].DrawEnemy(g);
             }
 
@@ -49,6 +55,7 @@ namespace _2022_Programming_Internal
         {
             foreach (Enemy E in enemy)
             {
+                //If enemy reaches end of panel go to top
                 E.MoveEnemy();
                 if (E.y >= pnlGame.Height)
                 {

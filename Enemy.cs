@@ -35,7 +35,7 @@ namespace _2022_Programming_Internal
 
         public void MoveEnemy()
         {
-            y += 5;
+            y += 2;
             enemyRec.Location = new Point(x, y);
         }
 

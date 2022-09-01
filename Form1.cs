@@ -16,6 +16,7 @@ namespace _2022_Programming_Internal
         Graphics g;
         Enemy[] enemy = new Enemy[6];
         Random yspeed = new Random();
+        Player player = new Player();
 
         public Game()
         {
@@ -47,6 +48,7 @@ namespace _2022_Programming_Internal
                 enemy[i].y += rndmspeed;
 
                 enemy[i].DrawEnemy(g);
+                player.DrawPlayer(g);
             }
 
         }

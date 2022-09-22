@@ -25,12 +25,13 @@ namespace _2022_Programming_Internal
             player = Properties.Resources.Player;
             playerRec = new Rectangle(x, y, width, height);
         }
+
+
+        public void DrawPlayer(Graphics g)
+        {
+            g.DrawImage(player, playerRec);
+        }
     }
 
-    public void DrawPlayer(Graphics g)
-    {
-
-        g.DrawImage(player, playerRec);
-    }
 
 }

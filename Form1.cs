@@ -46,11 +46,10 @@ namespace _2022_Programming_Internal
                 // generate a random number from 5 to 20 and put it in rndmspeed
                 int rndmspeed = yspeed.Next(2, 10);
                 enemy[i].y += rndmspeed;
-
                 enemy[i].DrawEnemy(g);
-                player.DrawPlayer(g);
             }
 
+            player.DrawPlayer(g);
         }
 
         private void TmrEnemy_Tick(object sender, EventArgs e)

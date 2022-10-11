@@ -17,6 +17,9 @@ namespace _2022_Programming_Internal
         Enemy[] enemy = new Enemy[6];
         Random yspeed = new Random();
         Player player = new Player();
+        bool left, right;
+        string move;
+
 
         public Game()
         {
@@ -51,6 +54,35 @@ namespace _2022_Programming_Internal
 
             player.DrawPlayer(g);
         }
+
+        private void Game_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { left = true; }
+            if (e.KeyData == Keys.Right) { right = true; }
+        }
+
+        private void Game_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { left = false; }
+            if (e.KeyData == Keys.Right) { right = false; }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (right) // if right arrow key pressed
+            {
+                move = "right";
+                player.MovePlayer(move);
+            }
+            if (left) // if left arrow key pressed
+            {
+                move = "left";
+                player.MovePlayer(move);
+            }
+
+        }
+
+
 
         private void TmrEnemy_Tick(object sender, EventArgs e)
         {

@@ -18,6 +18,7 @@ namespace _2022_Programming_Internal
         Random yspeed = new Random();
         Player player = new Player();
         bool left, right;
+        int score, lives;
         string move;
 
 
@@ -51,7 +52,6 @@ namespace _2022_Programming_Internal
                 enemy[i].y += rndmspeed;
                 enemy[i].DrawEnemy(g);
             }
-
             player.DrawPlayer(g);
         }
 
@@ -79,25 +79,41 @@ namespace _2022_Programming_Internal
                 move = "left";
                 player.MovePlayer(move);
             }
-
         }
-
-
 
         private void TmrEnemy_Tick(object sender, EventArgs e)
         {
-            foreach (Enemy E in enemy)
+            for (int i = 0; i < 6; i++)
             {
-                //If enemy reaches end of panel go to top
-                E.MoveEnemy();
-                if (E.y >= pnlGame.Height)
+                enemy[i].MoveEnemy();
+                if (player.playerRec.IntersectsWith(enemy[i].enemyRec))
                 {
-                    E.y = 30;
+                    //reset planet[i] back to top of panel
+                    enemy[i].y = 30; // set  y value of planetRec
+                    lives -= 1;// lose a life
+                    LblLives.Text = lives.ToString();// display number of lives
+                    CheckLives();
                 }
+                if (enemy[i].y >= pnlGame.Height)
+                {
+                    score += 1;//update the score
+                    LblScore.Text = score.ToString();// display score
+                    enemy[i].y = 30;
 
-
+                }
             }
             pnlGame.Invalidate();//makes the paint event fire to redraw the panel
         }
+
+        private void CheckLives()
+        {
+            if (lives == 0)
+            {
+                TmrEnemy.Enabled = false;
+                TmrPlayer.Enabled = false;
+                MessageBox.Show("Game Over");
+            }
+        }
+
     }
 }

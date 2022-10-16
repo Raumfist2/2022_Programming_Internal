@@ -11,6 +11,7 @@ namespace _2022_Programming_Internal
     {
 
         public int x, y, width, height;//variables for the rectangle
+
         public Image player;//variable for the player's image
 
         public Rectangle playerRec;//variable for a rectangle to place our image in

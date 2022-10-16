@@ -17,10 +17,11 @@ namespace _2022_Programming_Internal
         Enemy[] enemy = new Enemy[6];
         Random yspeed = new Random();
         Player player = new Player();
-        bool left, right;
+        bool left, right, space;
         int score, lives;
         string move;
-
+        //declare a list  missiles from the missile class
+        List<Bullet> bullet = new ListBullet>();
 
         public Game()
         {
@@ -38,6 +39,9 @@ namespace _2022_Programming_Internal
 
         private void Game_Load(object sender, EventArgs e)
         {
+            TmrPlayer.Enabled = false;
+            TmrEnemy.Enabled = false;
+            TxtName.Focus();
             // pass lives from LblLives Text property to lives variable
             lives = int.Parse(LblLives.Text);
         }
@@ -60,12 +64,14 @@ namespace _2022_Programming_Internal
         {
             if (e.KeyData == Keys.Left) { left = true; }
             if (e.KeyData == Keys.Right) { right = true; }
+            if (e.KeyData == Keys.Space) { space = true;  }
         }
 
         private void Game_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Left) { left = false; }
             if (e.KeyData == Keys.Right) { right = false; }
+            if (e.KeyData == Keys.Space) { space = false; }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -80,6 +86,31 @@ namespace _2022_Programming_Internal
                 move = "left";
                 player.MovePlayer(move);
             }
+        }
+
+        private void startGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            score = 0;
+            LblScore.Text = score.ToString();
+            // pass lives from LblLives Text property to lives variable
+            lives = int.Parse(LblLives.Text);
+            TmrEnemy.Enabled = true;
+            TmrPlayer.Enabled = true;
+            TxtName.Enabled = false;
+        }
+
+        private void Game_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Space)
+            {
+
+            }
+        }
+
+        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TmrPlayer.Enabled = false;
+            TmrEnemy.Enabled = false;
         }
 
         private void TmrEnemy_Tick(object sender, EventArgs e)

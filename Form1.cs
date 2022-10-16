@@ -38,7 +38,8 @@ namespace _2022_Programming_Internal
 
         private void Game_Load(object sender, EventArgs e)
         {
-
+            // pass lives from LblLives Text property to lives variable
+            lives = int.Parse(LblLives.Text);
         }
 
         private void pnlGame_Paint(object sender, PaintEventArgs e)

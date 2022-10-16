@@ -34,6 +34,8 @@
             this.pnlGame = new System.Windows.Forms.Panel();
             this.LblScore = new System.Windows.Forms.Label();
             this.LblLives = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // TmrEnemy
@@ -64,7 +66,7 @@
             this.LblScore.Font = new System.Drawing.Font("NSimSun", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblScore.Location = new System.Drawing.Point(503, 255);
             this.LblScore.Name = "LblScore";
-            this.LblScore.Size = new System.Drawing.Size(16, 16);
+            this.LblScore.Size = new System.Drawing.Size(17, 16);
             this.LblScore.TabIndex = 1;
             this.LblScore.Text = "0";
             // 
@@ -74,15 +76,26 @@
             this.LblLives.Font = new System.Drawing.Font("NSimSun", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblLives.Location = new System.Drawing.Point(503, 311);
             this.LblLives.Name = "LblLives";
-            this.LblLives.Size = new System.Drawing.Size(16, 16);
+            this.LblLives.Size = new System.Drawing.Size(17, 16);
             this.LblLives.TabIndex = 2;
             this.LblLives.Text = "3";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::_2022_Programming_Internal.Properties.Resources.title;
+            this.pictureBox1.Location = new System.Drawing.Point(455, 83);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(261, 109);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(728, 853);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.LblLives);
             this.Controls.Add(this.LblScore);
             this.Controls.Add(this.pnlGame);
@@ -91,6 +104,7 @@
             this.Load += new System.EventHandler(this.Game_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Game_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,6 +117,7 @@
         private System.Windows.Forms.Timer TmrPlayer;
         private System.Windows.Forms.Label LblScore;
         private System.Windows.Forms.Label LblLives;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

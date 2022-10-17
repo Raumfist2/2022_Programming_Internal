@@ -39,19 +39,18 @@
             this.startGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TxtName = new System.Windows.Forms.TextBox();
+            this.TmrBullet = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TmrEnemy
             // 
-            this.TmrEnemy.Enabled = true;
             this.TmrEnemy.Interval = 75;
             this.TmrEnemy.Tick += new System.EventHandler(this.TmrEnemy_Tick);
             // 
             // TmrPlayer
             // 
-            this.TmrPlayer.Enabled = true;
             this.TmrPlayer.Interval = 40;
             this.TmrPlayer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
@@ -127,6 +126,10 @@
             this.TxtName.Size = new System.Drawing.Size(100, 20);
             this.TxtName.TabIndex = 5;
             // 
+            // TmrBullet
+            // 
+            this.TmrBullet.Tick += new System.EventHandler(this.TmrBullet_Tick);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,6 +168,7 @@
         private System.Windows.Forms.ToolStripMenuItem startGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
         private System.Windows.Forms.TextBox TxtName;
+        private System.Windows.Forms.Timer TmrBullet;
     }
 }
 

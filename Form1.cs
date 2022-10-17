@@ -17,11 +17,11 @@ namespace _2022_Programming_Internal
         Enemy[] enemy = new Enemy[6];
         Random yspeed = new Random();
         Player player = new Player();
-        bool left, right, space;
+        bool left, right;
         int score, lives;
         string move;
         //declare a list  missiles from the missile class
-        List<Bullet> bullet = new ListBullet>();
+        List<Bullet> bullets = new List<Bullet>();
 
         public Game()
         {
@@ -58,20 +58,22 @@ namespace _2022_Programming_Internal
                 enemy[i].DrawEnemy(g);
             }
             player.DrawPlayer(g);
+            foreach (Bullet b in bullets)
+            {
+                b.draw(g);
+            }
         }
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Left) { left = true; }
             if (e.KeyData == Keys.Right) { right = true; }
-            if (e.KeyData == Keys.Space) { space = true;  }
         }
 
         private void Game_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Left) { left = false; }
             if (e.KeyData == Keys.Right) { right = false; }
-            if (e.KeyData == Keys.Space) { space = false; }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -96,6 +98,7 @@ namespace _2022_Programming_Internal
             lives = int.Parse(LblLives.Text);
             TmrEnemy.Enabled = true;
             TmrPlayer.Enabled = true;
+            TmrBullet.Enabled = true;
             TxtName.Enabled = false;
         }
 
@@ -103,14 +106,35 @@ namespace _2022_Programming_Internal
         {
             if(e.KeyChar == (char)Keys.Space)
             {
+                bullets.Add(new Bullet(player.playerRec));
+            }
+        }
+
+        private void TmrBullet_Tick(object sender, EventArgs e)
+        {
+            foreach (Enemy g in enemy)
+            {
+
+                foreach (Bullet b in bullets)
+                {
+                    if (g.enemyRec.IntersectsWith(b.bulletRec))
+                    {
+                        g.y = -20;// relocate planet to the top of the form
+                        bullets.Remove(b);
+                        break;
+                    }
+                }
 
             }
+            pnlGame.Invalidate();
         }
 
         private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TmrPlayer.Enabled = false;
             TmrEnemy.Enabled = false;
+            TmrBullet.Enabled = false;
+
         }
 
         private void TmrEnemy_Tick(object sender, EventArgs e)
@@ -144,6 +168,7 @@ namespace _2022_Programming_Internal
                 TmrEnemy.Enabled = false;
                 TmrPlayer.Enabled = false;
                 MessageBox.Show("Game Over");
+                this.Close();
             }
         }
 

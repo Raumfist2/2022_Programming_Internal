@@ -30,7 +30,7 @@ namespace _2022_Programming_Internal
 
         public void draw(Graphics g)
         {
-            y -= 30;//speed of bullet
+            y -= 5;//speed of bullet
 
             bulletRec = new Rectangle(x, y, width, height);
             g.DrawImage(bullet, bulletRec);

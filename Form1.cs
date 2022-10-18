@@ -60,7 +60,7 @@ namespace _2022_Programming_Internal
             player.DrawPlayer(g);
             foreach (Bullet b in bullets)
             {
-                b.draw(g);
+                b.MoveBullet(g);
             }
         }
 

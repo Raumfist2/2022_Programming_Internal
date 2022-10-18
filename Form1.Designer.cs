@@ -68,9 +68,9 @@
             // 
             this.LblScore.AutoSize = true;
             this.LblScore.Font = new System.Drawing.Font("NSimSun", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblScore.Location = new System.Drawing.Point(452, 282);
+            this.LblScore.Location = new System.Drawing.Point(452, 304);
             this.LblScore.Name = "LblScore";
-            this.LblScore.Size = new System.Drawing.Size(17, 16);
+            this.LblScore.Size = new System.Drawing.Size(16, 16);
             this.LblScore.TabIndex = 1;
             this.LblScore.Text = "0";
             // 
@@ -78,9 +78,9 @@
             // 
             this.LblLives.AutoSize = true;
             this.LblLives.Font = new System.Drawing.Font("NSimSun", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblLives.Location = new System.Drawing.Point(452, 344);
+            this.LblLives.Location = new System.Drawing.Point(452, 381);
             this.LblLives.Name = "LblLives";
-            this.LblLives.Size = new System.Drawing.Size(17, 16);
+            this.LblLives.Size = new System.Drawing.Size(16, 16);
             this.LblLives.TabIndex = 2;
             this.LblLives.Text = "3";
             // 
@@ -121,7 +121,7 @@
             // 
             // TxtName
             // 
-            this.TxtName.Location = new System.Drawing.Point(455, 231);
+            this.TxtName.Location = new System.Drawing.Point(455, 245);
             this.TxtName.Name = "TxtName";
             this.TxtName.Size = new System.Drawing.Size(100, 20);
             this.TxtName.TabIndex = 5;

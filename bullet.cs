@@ -28,7 +28,7 @@ namespace _2022_Programming_Internal
             bulletRec = new Rectangle(x, y, width, height);
         }
 
-        public void draw(Graphics g)
+        public void MoveBullet(Graphics g)
         {
             y -= 5;//speed of bullet
 

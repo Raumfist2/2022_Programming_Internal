@@ -18,7 +18,7 @@ namespace _2022_Programming_Internal
         Random yspeed = new Random();
         Player player = new Player();
         bool left, right;
-        int score, lives;
+        public int score, lives;
         bool allowShoot = true;
         bool allowBomb = true;
         string move;
@@ -46,6 +46,7 @@ namespace _2022_Programming_Internal
             TmrPlayer.Enabled = false;
             TmrEnemy.Enabled = false;
             testbox.Visible = false;
+            LblPower.Visible = false;
             // pass lives from LblLives Text property to lives variable
             lives = int.Parse(LblLives.Text);
         }
@@ -101,6 +102,16 @@ namespace _2022_Programming_Internal
         {
             if (e.KeyData == Keys.Left) { left = true; }
             if (e.KeyData == Keys.Right) { right = true; }
+
+            if (allowBomb == true)
+            {
+                allowBomb = false;
+
+                if (e.KeyData == Keys.G)
+                {
+                    bombs.Add(new Bomb(player.playerRec));
+                }
+            }
         }
 
         private void Game_KeyUp(object sender, KeyEventArgs e)
@@ -132,18 +143,6 @@ namespace _2022_Programming_Internal
                 if (e.KeyChar == (char)Keys.Space)
                 {
                     bullets.Add(new Bullet(player.playerRec));
-
-                }
-            }
-
-            if (allowBomb == true)
-            {
-                allowBomb = false;
-
-                if (e.KeyChar == (char)Keys.G)
-                {
-                    bombs.Add(new Bomb(player.playerRec));
-                    testbox.Visible = true;
                 }
             }
         }
@@ -170,13 +169,20 @@ namespace _2022_Programming_Internal
 
         private void TmrBomb_Tick(object sender, EventArgs e) //When Bomb collides with enemy
         {
+            testbox.Visible = true;
+            LblPower.Visible = true;
+
             foreach (Enemy g in enemy)
             {
                 foreach (Bomb o in bombs)
                 {
                     if (g.enemyRec.IntersectsWith(o.bombRec))
                     {
-                        g.y = -20;// relocate Enemy to the top of the form
+                        foreach (Enemy enemys in enemy)
+                        {
+                            enemys.y = -20;// relocate Enemy to the top of the form
+                        }
+
                         bombs.Remove(o);
                         score += 100;//update the score
                         LblScore.Text = score.ToString();// display score
@@ -185,6 +191,7 @@ namespace _2022_Programming_Internal
                 }
             }
             pnlGame.Invalidate();
+
         }
 
 
@@ -202,6 +209,15 @@ namespace _2022_Programming_Internal
             if (allowBomb == false)
             {
                 allowBomb = true;
+            }
+
+        }
+
+        private void TmrDifficulty_Tick(object sender, EventArgs e)
+        {
+            if (score >= 10000)
+            {
+                
             }
         }
 

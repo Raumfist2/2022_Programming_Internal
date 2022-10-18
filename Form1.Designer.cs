@@ -48,6 +48,8 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.TmrCooldownBomb = new System.Windows.Forms.Timer(this.components);
             this.testbox = new System.Windows.Forms.PictureBox();
+            this.LblPower = new System.Windows.Forms.Label();
+            this.TmrDifficulty = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -198,12 +200,13 @@
             // 
             // TmrCooldownBomb
             // 
+            this.TmrCooldownBomb.Interval = 10000;
             this.TmrCooldownBomb.Tick += new System.EventHandler(this.TmrCooldownBomb_Tick);
             // 
             // testbox
             // 
             this.testbox.Image = global::_2022_Programming_Internal.Properties.Resources.LargeProj;
-            this.testbox.Location = new System.Drawing.Point(511, 462);
+            this.testbox.Location = new System.Drawing.Point(517, 489);
             this.testbox.Name = "testbox";
             this.testbox.Size = new System.Drawing.Size(118, 118);
             this.testbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -211,12 +214,30 @@
             this.testbox.TabStop = false;
             this.testbox.Visible = false;
             // 
+            // LblPower
+            // 
+            this.LblPower.AutoSize = true;
+            this.LblPower.BackColor = System.Drawing.Color.Black;
+            this.LblPower.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPower.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.LblPower.Location = new System.Drawing.Point(510, 449);
+            this.LblPower.Name = "LblPower";
+            this.LblPower.Size = new System.Drawing.Size(130, 37);
+            this.LblPower.TabIndex = 11;
+            this.LblPower.Text = "READY";
+            this.LblPower.Visible = false;
+            // 
+            // TmrDifficulty
+            // 
+            this.TmrDifficulty.Tick += new System.EventHandler(this.TmrDifficulty_Tick);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(728, 853);
+            this.Controls.Add(this.LblPower);
             this.Controls.Add(this.testbox);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.label2);
@@ -268,6 +289,8 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Timer TmrCooldownBomb;
         private System.Windows.Forms.PictureBox testbox;
+        private System.Windows.Forms.Label LblPower;
+        private System.Windows.Forms.Timer TmrDifficulty;
     }
 }
 

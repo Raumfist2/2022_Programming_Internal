@@ -9,7 +9,6 @@ namespace _2022_Programming_Internal
 {
     class Player
     {
-
         public int x, y, width, height;//variables for the rectangle
 
         public Image player;//variable for the player's image
@@ -23,7 +22,7 @@ namespace _2022_Programming_Internal
             y = 620;
             width = 30;
             height = 30;
-            player = Properties.Resources.PlayerN;
+            player = Properties.Resources.PlayerN;//sources from the resources
             playerRec = new Rectangle(x, y, width, height);
         }
 
@@ -37,12 +36,12 @@ namespace _2022_Programming_Internal
                 {
 
                     x = 360;
-                    playerRec.Location = new Point(x, y);
+                    playerRec.Location = new Point(x, y);//max location is 360 = x
                 }
                 else
                 {
                     x += 5;
-                    playerRec.Location = new Point(x, y);
+                    playerRec.Location = new Point(x, y);//if smaller, it will move by 5
                 }
 
             }
@@ -54,24 +53,20 @@ namespace _2022_Programming_Internal
                 {
 
                     x = 10;
-                    playerRec.Location = new Point(x, y);
+                    playerRec.Location = new Point(x, y);//min location is 10 = x
                 }
                 else
                 {
                     x -= 5;
-                    playerRec.Location = new Point(x, y);
+                    playerRec.Location = new Point(x, y);//If greater, it will move by -5
                 }
 
             }
         }
-
-
 
     public void DrawPlayer(Graphics g)
         {
             g.DrawImage(player, playerRec);
         }
     }
-
-
 }

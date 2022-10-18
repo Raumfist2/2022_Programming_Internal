@@ -63,7 +63,7 @@ namespace _2022_Programming_Internal
             this.label1.Font = new System.Drawing.Font("Sitka Heading", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(50, 167);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(393, 152);
+            this.label1.Size = new System.Drawing.Size(395, 152);
             this.label1.TabIndex = 8;
             this.label1.Text = resources.GetString("label1.Text");
             // 

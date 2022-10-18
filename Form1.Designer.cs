@@ -42,8 +42,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TmrCooldown = new System.Windows.Forms.Timer(this.components);
+            this.TmrBomb = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.TmrCooldownBomb = new System.Windows.Forms.Timer(this.components);
+            this.testbox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testbox)).BeginInit();
             this.SuspendLayout();
             // 
             // TmrEnemy
@@ -60,7 +70,7 @@
             // 
             this.pnlGame.BackColor = System.Drawing.Color.SlateGray;
             this.pnlGame.BackgroundImage = global::_2022_Programming_Internal.Properties.Resources.Back1;
-            this.pnlGame.Location = new System.Drawing.Point(26, 83);
+            this.pnlGame.Location = new System.Drawing.Point(23, 55);
             this.pnlGame.Name = "pnlGame";
             this.pnlGame.Size = new System.Drawing.Size(400, 700);
             this.pnlGame.TabIndex = 0;
@@ -69,8 +79,9 @@
             // LblScore
             // 
             this.LblScore.AutoSize = true;
+            this.LblScore.BackColor = System.Drawing.SystemColors.Control;
             this.LblScore.Font = new System.Drawing.Font("NSimSun", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblScore.Location = new System.Drawing.Point(452, 274);
+            this.LblScore.Location = new System.Drawing.Point(459, 254);
             this.LblScore.Name = "LblScore";
             this.LblScore.Size = new System.Drawing.Size(16, 16);
             this.LblScore.TabIndex = 1;
@@ -79,8 +90,9 @@
             // LblLives
             // 
             this.LblLives.AutoSize = true;
+            this.LblLives.BackColor = System.Drawing.SystemColors.Control;
             this.LblLives.Font = new System.Drawing.Font("NSimSun", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblLives.Location = new System.Drawing.Point(452, 381);
+            this.LblLives.Location = new System.Drawing.Point(459, 354);
             this.LblLives.Name = "LblLives";
             this.LblLives.Size = new System.Drawing.Size(16, 16);
             this.LblLives.TabIndex = 2;
@@ -88,10 +100,11 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox1.Image = global::_2022_Programming_Internal.Properties.Resources.title;
-            this.pictureBox1.Location = new System.Drawing.Point(455, 83);
+            this.pictureBox1.Location = new System.Drawing.Point(452, 55);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(261, 109);
+            this.pictureBox1.Size = new System.Drawing.Size(260, 109);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -128,8 +141,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(451, 242);
+            this.label1.Location = new System.Drawing.Point(448, 223);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 21);
             this.label1.TabIndex = 5;
@@ -138,8 +152,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(451, 344);
+            this.label2.Location = new System.Drawing.Point(448, 317);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 21);
             this.label2.TabIndex = 6;
@@ -150,11 +165,60 @@
             this.TmrCooldown.Interval = 1000;
             this.TmrCooldown.Tick += new System.EventHandler(this.TmrCooldown_Tick);
             // 
+            // TmrBomb
+            // 
+            this.TmrBomb.Tick += new System.EventHandler(this.TmrBomb_Tick);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Black;
+            this.pictureBox2.Location = new System.Drawing.Point(429, 170);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(296, 41);
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox3.Location = new System.Drawing.Point(445, 44);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(268, 346);
+            this.pictureBox3.TabIndex = 8;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Black;
+            this.pictureBox4.Location = new System.Drawing.Point(429, 284);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(296, 19);
+            this.pictureBox4.TabIndex = 9;
+            this.pictureBox4.TabStop = false;
+            // 
+            // TmrCooldownBomb
+            // 
+            this.TmrCooldownBomb.Tick += new System.EventHandler(this.TmrCooldownBomb_Tick);
+            // 
+            // testbox
+            // 
+            this.testbox.Image = global::_2022_Programming_Internal.Properties.Resources.LargeProj;
+            this.testbox.Location = new System.Drawing.Point(511, 462);
+            this.testbox.Name = "testbox";
+            this.testbox.Size = new System.Drawing.Size(118, 118);
+            this.testbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.testbox.TabIndex = 10;
+            this.testbox.TabStop = false;
+            this.testbox.Visible = false;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(728, 853);
+            this.Controls.Add(this.testbox);
+            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -162,6 +226,8 @@
             this.Controls.Add(this.LblScore);
             this.Controls.Add(this.pnlGame);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox3);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Game";
             this.Text = "Ealien Revenge";
@@ -172,6 +238,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testbox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,6 +262,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer TmrCooldown;
+        private System.Windows.Forms.Timer TmrBomb;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Timer TmrCooldownBomb;
+        private System.Windows.Forms.PictureBox testbox;
     }
 }
 

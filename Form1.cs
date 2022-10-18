@@ -20,9 +20,12 @@ namespace _2022_Programming_Internal
         bool left, right;
         int score, lives;
         bool allowShoot = true;
+        bool allowBomb = true;
         string move;
         //declare a list  missiles from the missile class
         List<Bullet> bullets = new List<Bullet>();
+        //declare a list  missiles from the missile class
+        List<Bomb> bombs = new List<Bomb>();
 
         public Game()
         {
@@ -42,8 +45,32 @@ namespace _2022_Programming_Internal
         {
             TmrPlayer.Enabled = false;
             TmrEnemy.Enabled = false;
+            testbox.Visible = false;
             // pass lives from LblLives Text property to lives variable
             lives = int.Parse(LblLives.Text);
+        }
+
+        private void startGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            score = 0;
+            lives = 3;
+            LblScore.Text = score.ToString();
+            // pass lives from LblLives Text property to lives variable
+            lives = int.Parse(LblLives.Text);
+            TmrEnemy.Enabled = true;
+            TmrPlayer.Enabled = true;
+            TmrBullet.Enabled = true;
+            TmrCooldown.Enabled = true;
+            TmrCooldownBomb.Enabled = true;
+            TmrBomb.Enabled = true;
+        }
+
+        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TmrPlayer.Enabled = false;
+            TmrEnemy.Enabled = false;
+            TmrBullet.Enabled = false;
+            TmrBomb.Enabled = false;
         }
 
         private void pnlGame_Paint(object sender, PaintEventArgs e)
@@ -58,10 +85,16 @@ namespace _2022_Programming_Internal
                 enemy[i].DrawEnemy(g);
             }
             player.DrawPlayer(g);
+
+            foreach (Bomb o in bombs)
+            {
+                o.MoveBomb(g);
+            }
             foreach (Bullet b in bullets)
             {
                 b.MoveBullet(g);
             }
+
         }
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
@@ -90,18 +123,6 @@ namespace _2022_Programming_Internal
             }
         }
 
-        private void startGameToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            score = 0;
-            LblScore.Text = score.ToString();
-            // pass lives from LblLives Text property to lives variable
-            lives = int.Parse(LblLives.Text);
-            TmrEnemy.Enabled = true;
-            TmrPlayer.Enabled = true;
-            TmrBullet.Enabled = true;
-            TmrCooldown.Enabled = true;
-        }
-
         private void Game_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (allowShoot == true)
@@ -111,43 +132,76 @@ namespace _2022_Programming_Internal
                 if (e.KeyChar == (char)Keys.Space)
                 {
                     bullets.Add(new Bullet(player.playerRec));
+
+                }
+            }
+
+            if (allowBomb == true)
+            {
+                allowBomb = false;
+
+                if (e.KeyChar == (char)Keys.G)
+                {
+                    bombs.Add(new Bomb(player.playerRec));
+                    testbox.Visible = true;
                 }
             }
         }
+
 
         private void TmrBullet_Tick(object sender, EventArgs e)
         {
             foreach (Enemy g in enemy)
             {
-
                 foreach (Bullet b in bullets)
                 {
                     if (g.enemyRec.IntersectsWith(b.bulletRec))
                     {
                         g.y = -20;// relocate Enemy to the top of the form
                         bullets.Remove(b);
-
+                        score += 100;//update the score
+                        LblScore.Text = score.ToString();// display score
                         break;
                     }
                 }
-
             }
             pnlGame.Invalidate();
         }
 
-        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TmrBomb_Tick(object sender, EventArgs e) //When Bomb collides with enemy
         {
-            TmrPlayer.Enabled = false;
-            TmrEnemy.Enabled = false;
-            TmrBullet.Enabled = false;
-
+            foreach (Enemy g in enemy)
+            {
+                foreach (Bomb o in bombs)
+                {
+                    if (g.enemyRec.IntersectsWith(o.bombRec))
+                    {
+                        g.y = -20;// relocate Enemy to the top of the form
+                        bombs.Remove(o);
+                        score += 100;//update the score
+                        LblScore.Text = score.ToString();// display score
+                        break;
+                    }
+                }
+            }
+            pnlGame.Invalidate();
         }
+
+
 
         private void TmrCooldown_Tick(object sender, EventArgs e)
         {
             if (allowShoot == false)
             {
                 allowShoot = true;
+            }
+        }
+
+        private void TmrCooldownBomb_Tick(object sender, EventArgs e)
+        {
+            if (allowBomb == false)
+            {
+                allowBomb = true;
             }
         }
 
@@ -185,6 +239,5 @@ namespace _2022_Programming_Internal
                 this.Close();
             }
         }
-
     }
 }

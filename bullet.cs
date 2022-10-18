@@ -31,7 +31,6 @@ namespace _2022_Programming_Internal
         public void MoveBullet(Graphics g)
         {
             y -= 5;//speed of bullet
-
             bulletRec = new Rectangle(x, y, width, height);
             g.DrawImage(bullet, bulletRec);
         }

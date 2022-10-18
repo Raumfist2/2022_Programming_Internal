@@ -117,4 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Use A and D to move horizontally.
+Bullets can be shot by pressing "space"
+Avoid Ealiens and their projectiles or else you will lose a life.
+You gain +100 for each Ealien survived. From killing or dodging.
+Powerup will be charged over level and can be used by pressing "_"
+The difficulty will also increase overtime.
+
+
+</value>
+  </data>
 </root>

@@ -19,6 +19,7 @@ namespace _2022_Programming_Internal
         Player player = new Player();
         bool left, right;
         int score, lives;
+        bool allowShoot = true;
         string move;
         //declare a list  missiles from the missile class
         List<Bullet> bullets = new List<Bullet>();
@@ -41,7 +42,6 @@ namespace _2022_Programming_Internal
         {
             TmrPlayer.Enabled = false;
             TmrEnemy.Enabled = false;
-            TxtName.Focus();
             // pass lives from LblLives Text property to lives variable
             lives = int.Parse(LblLives.Text);
         }
@@ -99,14 +99,19 @@ namespace _2022_Programming_Internal
             TmrEnemy.Enabled = true;
             TmrPlayer.Enabled = true;
             TmrBullet.Enabled = true;
-            TxtName.Enabled = false;
+            TmrCooldown.Enabled = true;
         }
 
         private void Game_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (char)Keys.Space)
+            if (allowShoot == true)
             {
-                bullets.Add(new Bullet(player.playerRec));
+                allowShoot = false;
+
+                if (e.KeyChar == (char)Keys.Space)
+                {
+                    bullets.Add(new Bullet(player.playerRec));
+                }
             }
         }
 
@@ -119,8 +124,9 @@ namespace _2022_Programming_Internal
                 {
                     if (g.enemyRec.IntersectsWith(b.bulletRec))
                     {
-                        g.y = -20;// relocate planet to the top of the form
+                        g.y = -20;// relocate Enemy to the top of the form
                         bullets.Remove(b);
+
                         break;
                     }
                 }
@@ -135,6 +141,14 @@ namespace _2022_Programming_Internal
             TmrEnemy.Enabled = false;
             TmrBullet.Enabled = false;
 
+        }
+
+        private void TmrCooldown_Tick(object sender, EventArgs e)
+        {
+            if (allowShoot == false)
+            {
+                allowShoot = true;
+            }
         }
 
         private void TmrEnemy_Tick(object sender, EventArgs e)
@@ -152,7 +166,7 @@ namespace _2022_Programming_Internal
                 }
                 if (enemy[i].y >= pnlGame.Height)
                 {
-                    score += 1;//update the score
+                    score += 100;//update the score
                     LblScore.Text = score.ToString();// display score
                     enemy[i].y = 30;
 

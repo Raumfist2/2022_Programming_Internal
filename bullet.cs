@@ -20,7 +20,7 @@ namespace _2022_Programming_Internal
         // bullet where the player is located
         public Bullet(Rectangle playerRec)
         {
-            x = playerRec.X + 37; // move bullet to middle of player
+            x = playerRec.X + 4; // move bullet to middle of player
             y = playerRec.Y;
             width = 20;
             height = 20;

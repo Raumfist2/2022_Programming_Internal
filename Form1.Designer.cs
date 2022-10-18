@@ -38,8 +38,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.startGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TxtName = new System.Windows.Forms.TextBox();
             this.TmrBullet = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TmrCooldown = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +70,7 @@
             // 
             this.LblScore.AutoSize = true;
             this.LblScore.Font = new System.Drawing.Font("NSimSun", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblScore.Location = new System.Drawing.Point(452, 304);
+            this.LblScore.Location = new System.Drawing.Point(452, 274);
             this.LblScore.Name = "LblScore";
             this.LblScore.Size = new System.Drawing.Size(16, 16);
             this.LblScore.TabIndex = 1;
@@ -119,23 +121,42 @@
             this.pauseToolStripMenuItem.Text = "Pause";
             this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
             // 
-            // TxtName
-            // 
-            this.TxtName.Location = new System.Drawing.Point(455, 245);
-            this.TxtName.Name = "TxtName";
-            this.TxtName.Size = new System.Drawing.Size(100, 20);
-            this.TxtName.TabIndex = 5;
-            // 
             // TmrBullet
             // 
             this.TmrBullet.Tick += new System.EventHandler(this.TmrBullet_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(451, 242);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 21);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Score:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(451, 344);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 21);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Lives:";
+            // 
+            // TmrCooldown
+            // 
+            this.TmrCooldown.Interval = 1000;
+            this.TmrCooldown.Tick += new System.EventHandler(this.TmrCooldown_Tick);
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(728, 853);
-            this.Controls.Add(this.TxtName);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.LblLives);
             this.Controls.Add(this.LblScore);
@@ -167,8 +188,10 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem startGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
-        private System.Windows.Forms.TextBox TxtName;
         private System.Windows.Forms.Timer TmrBullet;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer TmrCooldown;
     }
 }
 

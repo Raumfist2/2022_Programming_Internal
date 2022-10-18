@@ -12,7 +12,6 @@ namespace _2022_Programming_Internal
         public int x, y, width, height;
         public Image enemyImage;
         public Rectangle enemyRec;
-        public int score;
 
         //Create a constructor (initialises the values of the fields)
         public Enemy(int spacing)

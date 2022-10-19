@@ -18,9 +18,9 @@ namespace _2022_Programming_Internal
         Random yspeed = new Random();
         Player player = new Player();
         bool left, right;
-        public int score, lives;
+        public int score, lives, difficulty;
         bool allowShoot = true;
-        bool allowBomb = true;
+        bool allowBomb = false;
         string move;
         //declare a list  missiles from the missile class
         List<Bullet> bullets = new List<Bullet>();
@@ -55,6 +55,7 @@ namespace _2022_Programming_Internal
         {
             score = 0;
             lives = 3;
+            difficulty = 0;
             LblScore.Text = score.ToString();
             // pass lives from LblLives Text property to lives variable
             lives = int.Parse(LblLives.Text);
@@ -64,6 +65,7 @@ namespace _2022_Programming_Internal
             TmrCooldown.Enabled = true;
             TmrCooldownBomb.Enabled = true;
             TmrBomb.Enabled = true;
+            TmrDifficulty.Enabled = true;
         }
 
         private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,7 +73,11 @@ namespace _2022_Programming_Internal
             TmrPlayer.Enabled = false;
             TmrEnemy.Enabled = false;
             TmrBullet.Enabled = false;
+            TmrCooldown.Enabled = true;
+            TmrCooldownBomb.Enabled = true;
             TmrBomb.Enabled = false;
+            TmrDifficulty.Enabled = false;
+
         }
 
         private void pnlGame_Paint(object sender, PaintEventArgs e)
@@ -95,21 +101,21 @@ namespace _2022_Programming_Internal
             {
                 b.MoveBullet(g);
             }
-
         }
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Left) { left = true; }
-            if (e.KeyData == Keys.Right) { right = true; }
+            if (e.KeyData == Keys.Left) { left = true; } //Sets left to true after the left key is pressed
+            if (e.KeyData == Keys.Right) { right = true; } //Sets right to true after right key is pressed
 
-            if (allowBomb == true)
+            if (allowBomb == true)//Checks if the bomb can be released
             {
-                allowBomb = false;
 
-                if (e.KeyData == Keys.G)
+                if (e.KeyData == Keys.G)//If key "g" is pressed
                 {
-                    bombs.Add(new Bomb(player.playerRec));
+                    allowBomb = false;//sets the bomb back to being unreleasable
+                    bombs.Add(new Bomb(player.playerRec));//Add a bomb
+                    TmrCooldownBomb.Enabled = true;//Re-enable cooldown
                 }
             }
         }
@@ -143,6 +149,9 @@ namespace _2022_Programming_Internal
                 if (e.KeyChar == (char)Keys.Space)
                 {
                     bullets.Add(new Bullet(player.playerRec));
+                    TmrCooldownBomb.Enabled=true;
+                    testbox.Visible = false;
+                    LblPower.Visible = false;
                 }
             }
         }
@@ -169,8 +178,6 @@ namespace _2022_Programming_Internal
 
         private void TmrBomb_Tick(object sender, EventArgs e) //When Bomb collides with enemy
         {
-            testbox.Visible = true;
-            LblPower.Visible = true;
 
             foreach (Enemy g in enemy)
             {
@@ -209,15 +216,48 @@ namespace _2022_Programming_Internal
             if (allowBomb == false)
             {
                 allowBomb = true;
+                testbox.Visible = true;
+                LblPower.Visible = true;
+                TmrCooldownBomb.Enabled = false;
             }
 
         }
 
         private void TmrDifficulty_Tick(object sender, EventArgs e)
         {
-            if (score >= 10000)
+            if (score >= 5000)
             {
-                
+                foreach (Enemy enemies in enemy)
+                {
+                    enemies.speed = 5;
+                }
+                if (score >= 10000)
+                {
+                    foreach (Enemy enemies in enemy)
+                    {
+                        enemies.speed = 10;
+                    }
+                    if (score >= 20000)
+                    {
+                        foreach (Enemy enemies in enemy)
+                        {
+                            enemies.speed = 20;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Enemy enemies in enemy)
+                {
+                    enemies.speed = 2;
+                }
+            }
+
+            if (allowBomb == false)
+            {
+                testbox.Visible = false;
+                LblPower.Visible = false;
             }
         }
 
@@ -226,20 +266,20 @@ namespace _2022_Programming_Internal
             for (int i = 0; i < 6; i++)
             {
                 enemy[i].MoveEnemy();
-                if (player.playerRec.IntersectsWith(enemy[i].enemyRec))
+
+                if (player.playerRec.IntersectsWith(enemy[i].enemyRec))//Enemy intercepts player
                 {
-                    //reset planet[i] back to top of panel
-                    enemy[i].y = 30; // set  y value of planetRec
-                    lives -= 1;// lose a life
-                    LblLives.Text = lives.ToString();// display number of lives
+                    //Resets the enemy to the top the panel
+                    enemy[i].y = 30; // The Y value it is set to
+                    lives -= 1;// Removes a life
+                    LblLives.Text = lives.ToString();// displays the number of lives
                     CheckLives();
                 }
-                if (enemy[i].y >= pnlGame.Height)
+                if (enemy[i].y >= pnlGame.Height)//Enemy reaches bottom
                 {
                     score += 100;//update the score
                     LblScore.Text = score.ToString();// display score
                     enemy[i].y = 30;
-
                 }
             }
             pnlGame.Invalidate();//makes the paint event fire to redraw the panel

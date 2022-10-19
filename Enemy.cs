@@ -9,7 +9,7 @@ namespace _2022_Programming_Internal
 {
     class Enemy
     {
-        public int x, y, width, height;
+        public int x, y, width, height, speed;
         public Image enemyImage;
         public Rectangle enemyRec;
 
@@ -34,7 +34,7 @@ namespace _2022_Programming_Internal
 
         public void MoveEnemy()
         {
-            y += 2;
+            y += speed;
             enemyRec.Location = new Point(x, y);
         }
 

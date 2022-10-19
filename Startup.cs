@@ -39,7 +39,7 @@ namespace _2022_Programming_Internal
 
         private void TxtName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }

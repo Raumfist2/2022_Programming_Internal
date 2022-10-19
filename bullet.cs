@@ -15,12 +15,10 @@ namespace _2022_Programming_Internal
 
         public Rectangle bulletRec;//variable for a rectangle to place our image in
 
-        // in the following constructor we pass in the values of playerRec which
-        // gives us the position of the player which we can then use to place the
-        // bullet where the player is located
+        //Create a constructor (initialises the values of the fields)
         public Bullet(Rectangle playerRec)
         {
-            x = playerRec.X + 4; // move bullet to middle of player
+            x = playerRec.X + 4; // moves the bullet to middle of player
             y = playerRec.Y;
             width = 20;
             height = 20;
@@ -32,7 +30,7 @@ namespace _2022_Programming_Internal
         {
             y -= 5;//speed of bullet
             bulletRec = new Rectangle(x, y, width, height);
-            g.DrawImage(bullet, bulletRec);
+            g.DrawImage(bullet, bulletRec);//draws the bullet
         }
     }
 }

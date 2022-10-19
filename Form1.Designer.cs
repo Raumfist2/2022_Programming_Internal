@@ -200,7 +200,7 @@
             // 
             // TmrCooldownBomb
             // 
-            this.TmrCooldownBomb.Interval = 10000;
+            this.TmrCooldownBomb.Interval = 30000;
             this.TmrCooldownBomb.Tick += new System.EventHandler(this.TmrCooldownBomb_Tick);
             // 
             // testbox

@@ -26,13 +26,14 @@ namespace _2022_Programming_Internal
             playerRec = new Rectangle(x, y, width, height);
         }
 
+        //Moving the player
         public void MovePlayer(string move)
         {
-            playerRec.Location = new Point(x, y);
+            playerRec.Location = new Point(x, y);//setting the players location
 
-            if (move == "right")
+            if (move == "right")//if right key pressed
             {
-                if (playerRec.Location.X > 360) // is spaceship within 50 of right side
+                if (playerRec.Location.X > 360) // if player is within 50 of right side
                 {
 
                     x = 360;
@@ -47,9 +48,9 @@ namespace _2022_Programming_Internal
             }
 
 
-            if (move == "left")
+            if (move == "left")//if left key pressed
             {
-                if (playerRec.Location.X < 10) // is spaceship within 10 of left side
+                if (playerRec.Location.X < 10) // if player is within 10 of left side
                 {
 
                     x = 10;
@@ -66,7 +67,7 @@ namespace _2022_Programming_Internal
 
     public void DrawPlayer(Graphics g)
         {
-            g.DrawImage(player, playerRec);
+            g.DrawImage(player, playerRec);//draws the player
         }
     }
 }

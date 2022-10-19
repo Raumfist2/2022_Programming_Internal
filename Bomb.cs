@@ -11,16 +11,14 @@ namespace _2022_Programming_Internal
     {
         public int x, y, width, height;
 
-        public Image bomb;//variable for the missile's image
+        public Image bomb;//variable for the bomb's image
 
         public Rectangle bombRec;//variable for a rectangle to place our image in
 
-        // in the following constructor we pass in the values of spaceRec which
-        // gives us the position of the spaceship which we can then use to place the
-        // missile where the spaceship is located
+        //Create a constructor (initialises the values of the fields)
         public Bomb(Rectangle playerRec)
         {
-            x = playerRec.X + 4; // move missile to middle of spaceship
+            x = playerRec.X + 4; // move the bomb towards the center of the player
             y = playerRec.Y;
             width = 30;
             height = 30;

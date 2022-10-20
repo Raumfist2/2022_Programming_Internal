@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.TmrEnemy = new System.Windows.Forms.Timer(this.components);
             this.TmrPlayer = new System.Windows.Forms.Timer(this.components);
-            this.pnlGame = new System.Windows.Forms.Panel();
             this.LblScore = new System.Windows.Forms.Label();
             this.LblLives = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.startGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,19 +42,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TmrCooldown = new System.Windows.Forms.Timer(this.components);
             this.TmrBomb = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.TmrCooldownBomb = new System.Windows.Forms.Timer(this.components);
-            this.testbox = new System.Windows.Forms.PictureBox();
             this.LblPower = new System.Windows.Forms.Label();
             this.TmrDifficulty = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.testbox = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnlGame = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.MenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.testbox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testbox)).BeginInit();
             this.SuspendLayout();
             // 
             // TmrEnemy
@@ -67,16 +68,6 @@
             // 
             this.TmrPlayer.Interval = 40;
             this.TmrPlayer.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // pnlGame
-            // 
-            this.pnlGame.BackColor = System.Drawing.Color.SlateGray;
-            this.pnlGame.BackgroundImage = global::_2022_Programming_Internal.Properties.Resources.Back1;
-            this.pnlGame.Location = new System.Drawing.Point(23, 55);
-            this.pnlGame.Name = "pnlGame";
-            this.pnlGame.Size = new System.Drawing.Size(400, 700);
-            this.pnlGame.TabIndex = 0;
-            this.pnlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlGame_Paint);
             // 
             // LblScore
             // 
@@ -99,17 +90,6 @@
             this.LblLives.Size = new System.Drawing.Size(16, 16);
             this.LblLives.TabIndex = 2;
             this.LblLives.Text = "3";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox1.Image = global::_2022_Programming_Internal.Properties.Resources.title;
-            this.pictureBox1.Location = new System.Drawing.Point(452, 55);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(260, 109);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // MenuStrip
             // 
@@ -171,48 +151,10 @@
             // 
             this.TmrBomb.Tick += new System.EventHandler(this.TmrBomb_Tick);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Black;
-            this.pictureBox2.Location = new System.Drawing.Point(429, 170);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(296, 41);
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox3.Location = new System.Drawing.Point(445, 44);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(268, 346);
-            this.pictureBox3.TabIndex = 8;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Black;
-            this.pictureBox4.Location = new System.Drawing.Point(429, 284);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(296, 19);
-            this.pictureBox4.TabIndex = 9;
-            this.pictureBox4.TabStop = false;
-            // 
             // TmrCooldownBomb
             // 
             this.TmrCooldownBomb.Interval = 30000;
             this.TmrCooldownBomb.Tick += new System.EventHandler(this.TmrCooldownBomb_Tick);
-            // 
-            // testbox
-            // 
-            this.testbox.Image = global::_2022_Programming_Internal.Properties.Resources.LargeProj;
-            this.testbox.Location = new System.Drawing.Point(517, 489);
-            this.testbox.Name = "testbox";
-            this.testbox.Size = new System.Drawing.Size(118, 118);
-            this.testbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.testbox.TabIndex = 10;
-            this.testbox.TabStop = false;
-            this.testbox.Visible = false;
             // 
             // LblPower
             // 
@@ -230,6 +172,65 @@
             // TmrDifficulty
             // 
             this.TmrDifficulty.Tick += new System.EventHandler(this.TmrDifficulty_Tick);
+            // 
+            // testbox
+            // 
+            this.testbox.Image = global::_2022_Programming_Internal.Properties.Resources.LargeProj;
+            this.testbox.Location = new System.Drawing.Point(517, 489);
+            this.testbox.Name = "testbox";
+            this.testbox.Size = new System.Drawing.Size(118, 118);
+            this.testbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.testbox.TabIndex = 10;
+            this.testbox.TabStop = false;
+            this.testbox.Visible = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Black;
+            this.pictureBox4.Location = new System.Drawing.Point(429, 284);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(296, 19);
+            this.pictureBox4.TabIndex = 9;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox1.Image = global::_2022_Programming_Internal.Properties.Resources.title;
+            this.pictureBox1.Location = new System.Drawing.Point(452, 55);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(260, 109);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pnlGame
+            // 
+            this.pnlGame.BackColor = System.Drawing.Color.SlateGray;
+            this.pnlGame.BackgroundImage = global::_2022_Programming_Internal.Properties.Resources.Back1;
+            this.pnlGame.Location = new System.Drawing.Point(23, 55);
+            this.pnlGame.Name = "pnlGame";
+            this.pnlGame.Size = new System.Drawing.Size(400, 700);
+            this.pnlGame.TabIndex = 0;
+            this.pnlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlGame_Paint);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Black;
+            this.pictureBox2.Location = new System.Drawing.Point(429, 170);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(296, 41);
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox3.Location = new System.Drawing.Point(445, 44);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(268, 346);
+            this.pictureBox3.TabIndex = 8;
+            this.pictureBox3.TabStop = false;
             // 
             // Game
             // 
@@ -249,6 +250,7 @@
             this.Controls.Add(this.MenuStrip);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MenuStrip;
             this.Name = "Game";
             this.Text = "Ealien Revenge";
@@ -256,13 +258,13 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Game_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Game_KeyUp);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.testbox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testbox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
